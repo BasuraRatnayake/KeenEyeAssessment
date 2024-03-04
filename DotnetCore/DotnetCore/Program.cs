@@ -8,6 +8,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<DatabaseService>();
 builder.Services.AddSingleton<IProductService, ProductService>();
 
 var app = builder.Build();

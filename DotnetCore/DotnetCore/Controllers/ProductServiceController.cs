@@ -1,6 +1,5 @@
 ﻿using DotnetCore.Interfaces;
 using DotnetCore.Models;
-using DotnetCore.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetCore.Controllers;
@@ -17,7 +16,12 @@ public class ProductServiceController : ControllerBase {
 	}
 
 	[HttpGet]
-	public async Task<List<Product>> Get() {
+	public List<Product> Get() {
 		return service.GetAll().ToList();
+	}
+
+	[HttpGet("{id}")]
+	public async Task<Product> Get(int id) {
+		return await service.GetOne(id);
 	}
 }
